@@ -20,15 +20,15 @@ class MyHomePage extends StatelessWidget {
   // Dummy List of Transactions
   final List<Transaction> transactions = [
     Transaction(
-      id: 'T1', 
-      title: 'New Shoes', 
-      amount: 13.99, 
+      id: 'T1',
+      title: 'New Shoes',
+      amount: 13.99,
       date: DateTime.now(),
     ),
     Transaction(
-      id: 'T2', 
-      title: 'Weekly Groceries', 
-      amount: 21.50, 
+      id: 'T2',
+      title: 'Weekly Groceries',
+      amount: 21.50,
       date: DateTime.now(),
     ),
   ];
@@ -51,7 +51,6 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-
           Column(
             children: transactions.map((tx) {
               return Card(
@@ -64,13 +63,13 @@ class MyHomePage extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.purple, 
+                          color: Colors.purple,
                           width: 2,
                         ),
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        tx.amount.toString(),
+                        '\$ ${tx.amount}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -82,17 +81,15 @@ class MyHomePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          tx.title, 
+                          tx.title,
                           style: TextStyle(
-                            fontSize: 16, 
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           tx.date.toString(),
-                          style: TextStyle(
-                            color: Colors.grey
-                          ),
+                          style: TextStyle(color: Colors.grey),
                         ),
                       ],
                     )

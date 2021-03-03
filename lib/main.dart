@@ -24,14 +24,14 @@ class MyHomePage extends StatelessWidget {
       title: 'New Shoes', 
       amount: 13.99, 
       date: DateTime.now(),
-      ),
-      Transaction(
+    ),
+    Transaction(
       id: 'T2', 
       title: 'Weekly Groceries', 
       amount: 13.99, 
       date: DateTime.now(),
-      ),
-    ];
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +51,27 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
+
           Column(
             children: transactions.map((tx) {
               return Card(
-                child: Text(tx.title),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        tx.amount.toString(),
+                      ),
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Text(tx.title),
+                        Text(
+                          tx.date.toString(),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               );
             }).toList(),
           ),

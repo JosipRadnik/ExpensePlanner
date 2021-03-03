@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Intl package provides internationalization and localization facilities. Installed on 3/3/2021.
+  intl: ^0.16.1
 
 
   # The following adds the Cupertino Icons font to your application.

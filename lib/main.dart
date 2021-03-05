@@ -29,10 +29,12 @@ class MyHomePage extends StatelessWidget {
     Transaction(
       id: 'T2',
       title: 'Weekly Groceries',
-      amount: 21.50,
+      amount: 21.54,
       date: DateTime.now(),
     ),
   ];
+  String titleInput;
+  String amountInput;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -50,6 +52,40 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               child: Text('CHART!'),
               elevation: 5,
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Title',
+                    ),
+                    onChanged: (value) {
+                      titleInput = value;
+                    }),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                    onChanged: (value) => amountInput = value,
+                  ),
+                  FlatButton(
+                    child: Text(
+                      'Add Transaction',
+                    ),
+                    textColor: Colors.purple,
+                    onPressed: () {
+                      print(titleInput);
+                      print(amountInput);
+                    },
+                  )
+                ],
+              ),
             ),
           ),
           Column(

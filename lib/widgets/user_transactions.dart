@@ -29,7 +29,8 @@ class _UserTransactionsState extends State<UserTransactions> {
   void _addNewTransaction(
     String txTitle,
     double txAmount,
-  ) {
+  ) 
+  {
     final newTx = Transaction(
       title: txTitle,
       amount: txAmount,

@@ -7,7 +7,7 @@ class Transaction {
   final double amount;
   final DateTime date;
 
-  // Constructon
+  // Construction Properties
   Transaction({
     @required this.id, 
     @required this.title, 

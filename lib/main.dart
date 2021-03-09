@@ -55,11 +55,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void startAddNewTransaction(BuildContext ctx) {
+  void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
       builder: (_) {
-        return NewTransaction(_addNewTransaction);
+        return GestureDetector(
+          onTap: () {},
+          child: NewTransaction(_addNewTransaction),
+          behavior: HitTestBehavior.opaque,
+        );
       },
     );
   }
@@ -70,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text('Flutter App'), actions: <Widget>[
         IconButton(
           icon: Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () => _startAddNewTransaction(context),
         ),
       ]),
       body: SingleChildScrollView(
@@ -92,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => _startAddNewTransaction(context),
       ),
     );
   }

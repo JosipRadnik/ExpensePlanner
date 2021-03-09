@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './widgets/user_transactions.dart';
+import './models/transaction.dart';
+import './widgets/new_transaction.dart';
+import './widgets/transaction_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,22 +18,61 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Transaction> _userTransactions = [
+    // Dummy List of Transactions:
+    Transaction(
+      id: 'T1',
+      title: 'New Shoes',
+      amount: 13.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 'T2',
+      title: 'Weekly Groceries',
+      amount: 21.54,
+      date: DateTime.now(),
+    ),
+  ];
+
+  void _addNewTransaction(
+    String txTitle,
+    double txAmount,
+  ) {
+    final newTx = Transaction(
+      title: txTitle,
+      amount: txAmount,
+      date: DateTime.now(),
+      id: DateTime.now().toString(),
+    );
+    setState(() {
+      _userTransactions.add(newTx);
+    });
+  }
+
+  void startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return NewTransaction(_addNewTransaction);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter App'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add), 
-            onPressed: () {} ,
-          ),
-        ]
-      ),
+      appBar: AppBar(title: Text('Flutter App'), actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () {},
+        ),
+      ]),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -44,7 +85,7 @@ class MyHomePage extends StatelessWidget {
                 elevation: 5,
               ),
             ),
-            UserTransactions()
+            TransactionList(_userTransactions),
           ],
         ),
       ),

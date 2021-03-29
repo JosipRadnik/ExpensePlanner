@@ -31,7 +31,7 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum
       };
-    });
+    }).reversed.toList();
   }
 
   double get totalSpending {
@@ -56,9 +56,11 @@ class Chart extends StatelessWidget {
               child: ChartBar(
                 data['day'],
                 data['amount'],
-                totalSpending == 0.0 ? 0.0 : (data['amount'] as double) / totalSpending,
+                totalSpending == 0.0
+                    ? 0.0
+                    : (data['amount'] as double) / totalSpending,
               ),
-            ); 
+            );
             //Text('${data['day']}: ${data['amount']}');
           }).toList(),
         ),

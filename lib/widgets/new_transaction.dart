@@ -13,7 +13,7 @@ class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  void submitData() {
+  void _submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
@@ -27,6 +27,15 @@ class _NewTransactionState extends State<NewTransaction> {
     );
 
     Navigator.of(context).pop();
+  }
+
+  void _presentDatePicker() {
+    showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(2020), 
+      lastDate: DateTime.now(),
+    );
   }
 
   @override
@@ -50,20 +59,20 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               controller: amountController,
               keyboardType: TextInputType.number,
-              onSubmitted: (_) => submitData(),
+              onSubmitted: (_) => _submitData(),
             ),
             Container(
-              height:50,
+              height: 50,
               child: Row(
                 children: <Widget>[
                   Text('No Date Chosen!'),
                   FlatButton(
                     textColor: Theme.of(context).primaryColor,
                     child: Text(
-                      'Choose Date', 
+                      'Choose Date',
                       style: TextStyle(fontWeight: FontWeight.bold),
-                    ), 
-                    onPressed: () {},
+                    ),
+                    onPressed: _presentDatePicker,
                   ),
                 ],
               ),
@@ -74,7 +83,7 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               color: Theme.of(context).primaryColor,
               textColor: Theme.of(context).textTheme.button.color,
-              onPressed: submitData,
+              onPressed: _submitData,
             )
           ],
         ),

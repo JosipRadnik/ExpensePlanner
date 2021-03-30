@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
+        //errorColor: Colors.red,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Personal Expenses',
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -103,6 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
+
+  void _deleteTransaction() {}
 
   @override
   Widget build(BuildContext context) {

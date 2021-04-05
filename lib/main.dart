@@ -122,6 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQuery.of(context)
     final appBar = AppBar(
       title: Text('Personal Expenses'),
       actions: <Widget>[

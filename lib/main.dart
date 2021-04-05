@@ -22,6 +22,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Personal Expenses',
+      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
@@ -45,9 +48,6 @@ class MyApp extends StatelessWidget {
               ),
         ),
       ),
-      title: 'Personal Expenses',
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -167,7 +167,9 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Show Chart'),
+                  Text('Show Chart', 
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                   Switch.adaptive(
                     activeColor: Theme.of(context).accentColor,
                     value: _showChart,

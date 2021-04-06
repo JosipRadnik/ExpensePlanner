@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
@@ -59,13 +62,12 @@ class _NewTransactionState extends State<NewTransaction> {
         elevation: 5,
         child: Container(
           padding: EdgeInsets.only(
-            top: 10, 
-            left: 10, 
-            right: 10, 
-            bottom: MediaQuery.of(context).viewInsets.bottom + 10
-          ),
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               TextField(
                 decoration: InputDecoration(
@@ -92,7 +94,16 @@ class _NewTransactionState extends State<NewTransaction> {
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                       ),
                     ),
-                    FlatButton(
+                    Platform.isIOS
+                    ? CupertinoButton(
+                      color: Colors.purple,
+                      child: Text(
+                        'Choose Date',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: _presentDatePicker,
+                    )
+                    : FlatButton(
                       textColor: Theme.of(context).primaryColor,
                       child: Text(
                         'Choose Date',

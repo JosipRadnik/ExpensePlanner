@@ -144,14 +144,17 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _buildPortraitContent(MediaQueryData mediaQuery, AppBar appBar) {
-    return Container(
-      height: (mediaQuery.size.height -
-        appBar.preferredSize.height -
-        mediaQuery.padding.top) *
-      0.3,
-      child: Chart(_recentTransactions),
-    );
+  List<Widget> _buildPortraitContent(MediaQueryData mediaQuery, AppBar appBar, Widget txListWidget) {
+    return [
+      Container(
+        height: (mediaQuery.size.height -
+                appBar.preferredSize.height -
+                mediaQuery.padding.top) *
+            0.3,
+        child: Chart(_recentTransactions),
+      ),
+      txListWidget
+    ];
   }
 
   @override
@@ -195,8 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             if (isLandscape) _buildLandscapeContent(),
-            if (!isLandscape) _buildPortraitContent(mediaQuery, appBar),
-              if (!isLandscape) txListWidget,
+            if (!isLandscape) ... _buildPortraitContent(mediaQuery, appBar, txListWidget),
             if (isLandscape)
               _showChart
                   ? Container(
